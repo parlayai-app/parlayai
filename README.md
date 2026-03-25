@@ -1,1 +1,75 @@
-# parlaiai
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ParlayAI — AI Sports Betting Analyst</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0A0A0F; color: white; font-family: -apple-system, sans-serif; }
+.hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; text-align: center; }
+.badge { background: rgba(245,197,66,0.12); border: 1px solid rgba(245,197,66,0.3); border-radius: 20px; padding: 6px 16px; font-size: 12px; font-weight: 700; color: #F5C542; letter-spacing: 1px; margin-bottom: 24px; display: inline-block; }
+h1 { font-size: clamp(36px, 8vw, 72px); font-weight: 900; line-height: 1.1; margin-bottom: 20px; }
+h1 span { color: #F5C542; }
+p.subtitle { font-size: clamp(16px, 3vw, 20px); color: rgba(255,255,255,0.55); max-width: 500px; line-height: 1.6; margin-bottom: 40px; }
+.features { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 48px; }
+.feature { background: rgba(255,255,255,0.05); border: 0.5px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px 16px; font-size: 13px; color: rgba(255,255,255,0.7); }
+.form { display: flex; gap: 10px; max-width: 440px; width: 100%; margin-bottom: 16px; flex-wrap: wrap; justify-content: center; }
+input[type="email"] { flex: 1; min-width: 200px; background: rgba(255,255,255,0.07); border: 0.5px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 14px 18px; color: white; font-size: 15px; outline: none; }
+input[type="email"]::placeholder { color: rgba(255,255,255,0.3); }
+button.submit { background: #F5C542; color: black; border: none; border-radius: 12px; padding: 14px 24px; font-size: 15px; font-weight: 800; cursor: pointer; white-space: nowrap; }
+.appstore { margin-top: 8px; }
+.appstore a { color: #F5C542; font-size: 13px; text-decoration: none; opacity: 0.8; }
+.divider { color: rgba(255,255,255,0.2); margin: 0 8px; }
+.stats { display: flex; gap: 40px; margin-top: 60px; flex-wrap: wrap; justify-content: center; }
+.stat { text-align: center; }
+.stat-num { font-size: 28px; font-weight: 900; color: #F5C542; }
+.stat-label { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+.success { display: none; color: #F5C542; font-size: 14px; margin-top: 12px; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="badge">● LIVE ODDS</div>
+  <h1>Your AI <span>Sports Betting</span> Analyst</h1>
+  <p class="subtitle">Compare real lines from DraftKings, FanDuel, BetMGM and Caesars. Get AI-powered picks. Share in iMessage.</p>
+  
+  <div class="features">
+    <div class="feature">🎯 AI Picks</div>
+    <div class="feature">📊 Odds Comparison</div>
+    <div class="feature">🏈 All Sports</div>
+    <div class="feature">💬 iMessage Extension</div>
+    <div class="feature">🔢 Parlay Builder</div>
+  </div>
+
+  <form class="form" onsubmit="handleSubmit(event)">
+    <input type="email" id="email" placeholder="Enter your email for early access" required>
+    <button type="submit" class="submit">Get Early Access</button>
+  </form>
+  <p class="success" id="success">🎉 You're on the list! We'll be in touch.</p>
+  
+  <div class="appstore">
+    <a href="https://apps.apple.com/app/parlayai/id6760735347">Download on the App Store</a>
+    <span class="divider">|</span>
+    <a href="https://apps.apple.com/app/parlayai/id6760735347">Free for iOS</a>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-num">4</div><div class="stat-label">Sportsbooks Compared</div></div>
+    <div class="stat"><div class="stat-num">40+</div><div class="stat-label">Sports & Leagues</div></div>
+    <div class="stat"><div class="stat-num">AI</div><div class="stat-label">Powered Analysis</div></div>
+  </div>
+</div>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const email = document.getElementById('email').value;
+  document.getElementById('success').style.display = 'block';
+  document.querySelector('.form').style.display = 'none';
+  // Add your email service here (Mailchimp, etc)
+  console.log('Email:', email);
+}
+</script>
+</body>
+</html>

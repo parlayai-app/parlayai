@@ -25,7 +25,7 @@ button.submit { background: #F5C542; color: black; border: none; border-radius: 
 .stat { text-align: center; }
 .stat-num { font-size: 28px; font-weight: 900; color: #F5C542; }
 .stat-label { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 4px; }
-.success-msg { display: none; color: #F5C542; font-size: 14px; margin-top: 12px; }
+.success-msg { display: none; color: #F5C542; font-size: 15px; margin-top: 12px; font-weight: 600; }
 </style>
 </head>
 <body>
@@ -42,9 +42,8 @@ button.submit { background: #F5C542; color: black; border: none; border-radius: 
     <div class="feature">🔢 Parlay Builder</div>
   </div>
 
-  <form class="form" action="https://formspree.io/f/xgopwzdy" method="POST">
-    <input type="hidden" name="_next" value="https://parlayai-app.github.io/parlayai/?success=true">
-    <input type="email" name="email" placeholder="Enter your email for early access" required>
+  <form class="form" id="emailForm">
+    <input type="email" id="emailInput" placeholder="Enter your email for early access" required>
     <button type="submit" class="submit">Get Early Access →</button>
   </form>
   <p class="success-msg" id="successMsg">🎉 You're on the list! We'll be in touch.</p>
@@ -63,10 +62,21 @@ button.submit { background: #F5C542; color: black; border: none; border-radius: 
 </div>
 
 <script>
-if (window.location.search.includes('success=true')) {
-  document.querySelector('.form').style.display = 'none';
-  document.getElementById('successMsg').style.display = 'block';
-}
+document.getElementById('emailForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const email = document.getElementById('emailInput').value;
+  try {
+    await fetch('https://formspree.io/f/xgopwzdy', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ email: email })
+    });
+    document.getElementById('emailForm').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  } catch(err) {
+    alert('Something went wrong. Please try again.');
+  }
+});
 </script>
 </body>
 </html>

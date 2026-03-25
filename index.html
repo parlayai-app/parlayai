@@ -25,6 +25,7 @@ button.submit { background: #F5C542; color: black; border: none; border-radius: 
 .stat { text-align: center; }
 .stat-num { font-size: 28px; font-weight: 900; color: #F5C542; }
 .stat-label { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+.success-msg { display: none; color: #F5C542; font-size: 14px; margin-top: 12px; }
 </style>
 </head>
 <body>
@@ -42,9 +43,11 @@ button.submit { background: #F5C542; color: black; border: none; border-radius: 
   </div>
 
   <form class="form" action="https://formspree.io/f/xgopwzdy" method="POST">
+    <input type="hidden" name="_next" value="https://parlayai-app.github.io/parlayai/?success=true">
     <input type="email" name="email" placeholder="Enter your email for early access" required>
     <button type="submit" class="submit">Get Early Access →</button>
   </form>
+  <p class="success-msg" id="successMsg">🎉 You're on the list! We'll be in touch.</p>
   
   <div class="appstore">
     <a href="https://apps.apple.com/app/parlayai/id6760735347">Download on the App Store</a>
@@ -58,5 +61,12 @@ button.submit { background: #F5C542; color: black; border: none; border-radius: 
     <div class="stat"><div class="stat-num">AI</div><div class="stat-label">Powered Analysis</div></div>
   </div>
 </div>
+
+<script>
+if (window.location.search.includes('success=true')) {
+  document.querySelector('.form').style.display = 'none';
+  document.getElementById('successMsg').style.display = 'block';
+}
+</script>
 </body>
 </html>
